@@ -2,6 +2,7 @@ package com.example.vophungquang.adapter;
 /**
  * Created by vophungquang
  */
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,9 @@ import com.example.vophungquang.R;
 import com.example.vophungquang.model.Place;
 
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class PlaceAdapter extends BaseAdapter {
 

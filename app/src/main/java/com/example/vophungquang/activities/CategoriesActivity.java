@@ -2,6 +2,7 @@ package com.example.vophungquang.activities;
 /**
  * Created by vophungquang
  */
+
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -13,11 +14,19 @@ import android.view.MenuItem;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.vophungquang.R;
+import com.example.vophungquang.model.Category;
 import com.example.vophungquang.sqlite.DatabaseUtil;
 import com.example.vophungquang.util.CountDrawable;
+
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class CategoriesActivity extends AppCompatActivity {
 

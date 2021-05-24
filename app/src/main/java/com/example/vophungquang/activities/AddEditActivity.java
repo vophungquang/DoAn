@@ -2,10 +2,12 @@ package com.example.vophungquang.activities;
 /**
  * Created by vophungquang
  */
+
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.telecom.Call;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Button;
@@ -16,11 +18,16 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.vophungquang.R;
+import com.example.vophungquang.model.Category;
 import com.example.vophungquang.model.Place;
 import com.example.vophungquang.network.api.ApiUtils;
 import com.example.vophungquang.network.api.MapService;
 import com.example.vophungquang.network.pojo.GeocodingRoot;
 import com.example.vophungquang.sqlite.DatabaseUtil;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class AddEditActivity extends AppCompatActivity {
 

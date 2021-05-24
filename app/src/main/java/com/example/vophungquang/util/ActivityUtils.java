@@ -2,9 +2,12 @@ package com.example.vophungquang.util;
 /**
  * Created by vophungquang
  */
+
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+
+import androidx.appcompat.app.AlertDialog;
 
 import com.example.vophungquang.R;
 

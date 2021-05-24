@@ -2,11 +2,13 @@ package com.example.vophungquang.sqlite;
 /**
  * Created by vophungquang
  */
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.vophungquang.model.Category;
 import com.example.vophungquang.model.Place;
 
 import java.util.ArrayList;

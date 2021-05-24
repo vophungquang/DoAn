@@ -2,20 +2,26 @@ package com.example.vophungquang.activities;
 /**
  * Created by vophungquang
  */
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.vophungquang.R;
 import com.example.vophungquang.define.Conts;
 import com.example.vophungquang.sqlite.DatabaseUtil;
 import com.example.vophungquang.util.SharedPreferencesUtil;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class SplashActivity extends AppCompatActivity implements Animation.AnimationListener {
 
@@ -23,6 +29,8 @@ public class SplashActivity extends AppCompatActivity implements Animation.Anima
 
     @BindView(R.id.content_splash)
     RelativeLayout contentSplash;
+    @BindView(R.id.icon_splash)
+    RelativeLayout iconSplash;
 
     private SharedPreferencesUtil preUtil;
 
@@ -41,9 +49,14 @@ public class SplashActivity extends AppCompatActivity implements Animation.Anima
     }
 
     private void loadAnimation() {
-        Animation animation = AnimationUtils.loadAnimation(this, R.anim.alpha_background);
-        contentSplash.setAnimation(animation);
-        animation.setAnimationListener(this);
+        Animation transAnimation = AnimationUtils.loadAnimation(this, R.anim.trasition_icon);
+        contentSplash.setAnimation(transAnimation);
+        transAnimation.setAnimationListener(this);
+    }
+    private void loaSplash() {
+        Animation alphaAnimation = AnimationUtils.loadAnimation(this, R.anim.alpha_background);
+        iconSplash.setAnimation(alphaAnimation);
+        alphaAnimation.setAnimationListener(this);
     }
 
     private void initDataBase() {
@@ -64,11 +77,12 @@ public class SplashActivity extends AppCompatActivity implements Animation.Anima
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+                Toast.makeText(getApplicationContext(),"Make by VO PHUNG QUANG",Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(SplashActivity.this, CategoriesActivity.class);
                 startActivity(i);
                 finish();
             }
-        }, SPLASH_TIME_OUT);
+        }, 3000);
     }
 
     @Override
@@ -98,5 +112,4 @@ public class SplashActivity extends AppCompatActivity implements Animation.Anima
             preUtil.saveBoolean(Conts.FIRST_RUN_APP, true);
         }
     }
-}
 }

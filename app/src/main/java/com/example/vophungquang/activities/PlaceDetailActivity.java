@@ -2,6 +2,7 @@ package com.example.vophungquang.activities;
 /**
  * Created by vophungquang
  */
+
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,11 +14,16 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.vophungquang.R;
 import com.example.vophungquang.model.Place;
 import com.example.vophungquang.sqlite.DatabaseUtil;
 import com.example.vophungquang.util.ActivityUtils;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class PlaceDetailActivity extends AppCompatActivity {
 

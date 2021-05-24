@@ -2,6 +2,7 @@ package com.example.vophungquang.activities;
 /**
  * Created by vophungquang
  */
+
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -13,15 +14,21 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.vophungquang.R;
 import com.example.vophungquang.adapter.PlaceAdapter;
+import com.example.vophungquang.model.Category;
 import com.example.vophungquang.model.Place;
 import com.example.vophungquang.sqlite.DatabaseUtil;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class PlacesActivity extends AppCompatActivity {
 
