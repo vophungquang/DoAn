@@ -117,6 +117,7 @@ public class PlacesActivity extends AppCompatActivity {
                 startActivity(intentMap);
                 break;
         }
+
     }
 
     @Override

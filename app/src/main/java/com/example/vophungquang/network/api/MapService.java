@@ -2,8 +2,13 @@ package com.example.vophungquang.network.api;
 /**
  * Created by vophungquang
  */
+
 import com.example.vophungquang.network.pojo.DirectionRoot;
 import com.example.vophungquang.network.pojo.GeocodingRoot;
+
+import retrofit2.Call;
+import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 public interface MapService {
 
