@@ -7,7 +7,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.telecom.Call;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Button;
@@ -29,6 +28,7 @@ import com.example.vophungquang.sqlite.DatabaseUtil;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
@@ -135,7 +135,7 @@ public class AddEditActivity extends AppCompatActivity {
                 placeAddress, getString(R.string.google_api_key));
         call.enqueue(new Callback<GeocodingRoot>() {
             @Override
-            public void onResponse(Call<GeocodingRoot> call, Response<GeocodingRoot> response) {
+            public void onResponse(retrofit2.Call<GeocodingRoot> call, Response<GeocodingRoot> response) {
                 GeocodingRoot geocodingRoot = response.body();
                 Log.e(TAG, geocodingRoot.getStatus());
                 if (geocodingRoot.getStatus().equals("OK")) {
@@ -160,10 +160,42 @@ public class AddEditActivity extends AppCompatActivity {
                 progressDialog.dismiss();
             }
 
+
             @Override
-            public void onFailure(Call<GeocodingRoot> call, Throwable t) {
+            public void onFailure(retrofit2.Call<GeocodingRoot> call, Throwable t) {
                 Log.e(TAG, t.getMessage());
             }
+
+//            @Override
+//            public void onResponse(Call<GeocodingRoot> call, Response<GeocodingRoot> response) {
+//                GeocodingRoot geocodingRoot = response.body();
+//                Log.e(TAG, geocodingRoot.getStatus());
+//                if (geocodingRoot.getStatus().equals("OK")) {
+//                    double lat = geocodingRoot.getResults().get(0).getGeometry().getLocation().getLat();
+//                    double lng = geocodingRoot.getResults().get(0).getGeometry().getLocation().getLng();
+//                    builder.setLng(lng);
+//                    builder.setLat(lat);
+//
+//                    Log.e("Lat ", String.valueOf(lat));
+//                    Log.e("Lng ", String.valueOf(lng));
+//
+//                    Toast.makeText(AddEditActivity.this, "Lat " + lat + " Lng " + lng, Toast.LENGTH_SHORT).show();
+//
+//                    Place place = builder.build();
+//                    databaseUtil.insertPlace(place);
+//                    Toast.makeText(AddEditActivity.this, "Save Succesfull", Toast.LENGTH_SHORT).show();
+//
+//                    Intent intent = new Intent(AddEditActivity.this, CategoriesActivity.class);
+//                    startActivity(intent);
+//                    finish();
+//                }
+//                progressDialog.dismiss();
+//            }
+//
+//            @Override
+//            public void onFailure(Call<GeocodingRoot> call, Throwable t) {
+//                Log.e(TAG, t.getMessage());
+//            }
         });
     }
 

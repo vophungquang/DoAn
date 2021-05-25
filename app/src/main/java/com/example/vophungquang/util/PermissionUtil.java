@@ -6,7 +6,8 @@ import android.content.Context;
 
 import com.example.vophungquang.R;
 
-public final class PermissionUtil {
+public final class
+PermissionUtil {
     public static final void checkPermission(Context context, PermissionListener permissionListener, String[] permissions, String msg) {
         new TedPermission(context)
                 .setPermissionListener(permissionListener)

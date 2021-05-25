@@ -61,7 +61,7 @@ public class MapsActivity extends AppCompatActivity implements
         ButterKnife.bind(this);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(map);
+                .findFragmentById(R.id.map);
 
         Intent intent = getIntent();
         if (intent.getAction().equals(PlaceDetailActivity.ACTION_DIRECT)) {
