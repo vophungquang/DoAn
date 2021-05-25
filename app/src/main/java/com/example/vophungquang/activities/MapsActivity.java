@@ -3,10 +3,7 @@ package com.example.vophungquang.activities;
  * Created by vophungquang
  */
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.location.LocationListener;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -86,20 +83,20 @@ public class MapsActivity extends AppCompatActivity implements
                     mMap.addMarker(new MarkerOptions().position(latLngPlace).title(place.getName()));
                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLngPlace, 15.0F));
 
-                    if (android.support.v4.app.ActivityCompat.checkSelfPermission(MapsActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                            && android.support.v4.app.ActivityCompat.checkSelfPermission(MapsActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                        return;
-                    }
-                    buildGoogleApiClient();
-                    mMap.setMyLocationEnabled(true);
-
-//                    onCompleteGetCurrentLoc.drawDirection(latLngPlace);
-
-//                    if (mLocation != null) {
-//                        Log.e("Current Location", mLocation.getLatitude() + " " + mLocation.getLongitude());
-//                        LatLng latLngCurrent = new LatLng(mLocation.getLatitude(), mLocation.getLongitude());
-//                        drawDirection(latLngCurrent, latLngPlace, getString(R.string.google_api_key));
+//                    if (android.support.v4.app.ActivityCompat.checkSelfPermission(MapsActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+//                            && android.support.v4.app.ActivityCompat.checkSelfPermission(MapsActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//                        return;
 //                    }
+//                    buildGoogleApiClient();
+//                    mMap.setMyLocationEnabled(true);
+
+////                   onCompleteGetCurrentLoc.drawDirection(latLngPlace);
+////
+////                    if (mLocation != null) {
+////                        Log.e("Current Location", mLocation.getLatitude() + " " + mLocation.getLongitude());
+////                        LatLng latLngCurrent = new LatLng(mLocation.getLatitude(), mLocation.getLongitude());
+////                        drawDirection(latLngCurrent, latLngPlace, getString(R.string.google_api_key));
+////                    }
                 }
             });
 
@@ -125,7 +122,7 @@ public class MapsActivity extends AppCompatActivity implements
         mLocationRequest.setFastestInterval(5000);
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
-        getCurrentLocation();
+//        getCurrentLocation();
     }
 
     @Override
@@ -139,28 +136,28 @@ public class MapsActivity extends AppCompatActivity implements
         Log.i("Connection Failed", "Connection failed: ConnectionResult.getErrorCode() = " + result.getErrorCode());
     }
 
-    private void getCurrentLocation() {
-        if (android.support.v4.app.ActivityCompat.checkSelfPermission(MapsActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                && android.support.v4.app.ActivityCompat.checkSelfPermission(MapsActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }
-        LocationServices.FusedLocationApi.requestLocationUpdates(apiClient, mLocationRequest, new LocationListener() {
-                    @Override
-                    public void onLocationChanged(final android.location.Location location) {
-                        mLocation = location;
-
-                        if (latLngPlace == null) return;
-                        LatLng latLngCurrent = new LatLng(location.getLatitude(), location.getLongitude());
-                        drawDirectionMap(latLngCurrent, latLngPlace, getString(R.string.google_api_key));
-                        Log.e("Current Location", location.getLatitude() + " " + location.getLongitude());
-
-                        if (apiClient != null) {
-                            LocationServices.FusedLocationApi.removeLocationUpdates(apiClient, this);
-                        }
-                    }
-                }
-        );
-    }
+//    private void getCurrentLocation() {
+//        if (android.support.v4.app.ActivityCompat.checkSelfPermission(MapsActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+//                && android.support.v4.app.ActivityCompat.checkSelfPermission(MapsActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//            return;
+//        }
+//        LocationServices.FusedLocationApi.requestLocationUpdates(apiClient, mLocationRequest, new LocationListener() {
+//                    @Override
+//                    public void onLocationChanged(final android.location.Location location) {
+//                        mLocation = location;
+//
+//                        if (latLngPlace == null) return;
+//                        LatLng latLngCurrent = new LatLng(location.getLatitude(), location.getLongitude());
+//                        drawDirectionMap(latLngCurrent, latLngPlace, getString(R.string.google_api_key));
+//                        Log.e("Current Location", location.getLatitude() + " " + location.getLongitude());
+//
+//                        if (apiClient != null) {
+//                            LocationServices.FusedLocationApi.removeLocationUpdates(apiClient, this);
+//                        }
+//                    }
+//                }
+//        );
+//    }
 
     private void buildGoogleApiClient() {
         apiClient = new GoogleApiClient.Builder(this)
